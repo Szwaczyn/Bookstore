@@ -1,21 +1,26 @@
 package bookstore.entity;
 
+import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
+import java.util.Set;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="book")
 
-public class Book {
+public class Book implements Serializable{
 	@Id
+	@GeneratedValue
 	private int id;
 	private String name;
 	private String author;
-	private Date released;
+	private Timestamp released;
 	
+	@OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
+	// @OrderBy("date ASC")
+	private Set<Comment> comment;
 	
 	public int getId() {
 		return id;
@@ -38,7 +43,13 @@ public class Book {
 	public Date getReleased() {
 		return released;
 	}
-	public void setReleased(Date released) {
+	public void setReleased(Timestamp released) {
 		this.released = released;
+	}
+	public Set<Comment> getComment() {
+		return comment;
+	}
+	public void setComment(Set<Comment> comment) {
+		this.comment = comment;
 	}
 }

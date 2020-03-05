@@ -1,18 +1,23 @@
 package bookstore.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name="comment")
-public class Comment {
+public class Comment implements Serializable{
 
 	@Id
+	@GeneratedValue
 	private int id;
 	private String author;
+	@Lob() 
 	private String content;
-	private int book_ID;
+	
+	@ManyToOne
+	@JoinColumn(name="book")
+	private Book book;
 	
 	public int getId() {
 		return id;
@@ -32,10 +37,10 @@ public class Comment {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public int getBook_ID() {
-		return book_ID;
+	public Book getBook() {
+		return book;
 	}
-	public void setBook_ID(int book_ID) {
-		this.book_ID = book_ID;
+	public void setBook(Book book) {
+		this.book = book;
 	}
 }

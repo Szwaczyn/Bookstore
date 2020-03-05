@@ -1,18 +1,21 @@
 package bookstore.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name="user")
-public class User {
+public class User implements Serializable{
 	
 	@Id
 	private int id;
 	private String login;
 	private String password;
-	private int role_ID;
+	
+	@ManyToOne
+	@JoinColumn(name="role")
+	private Role role;
 	
 	
 	public int getId() {
@@ -33,10 +36,12 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public int getRole_ID() {
-		return role_ID;
+	public Role getRole() {
+		return role;
 	}
-	public void setRole_ID(int role_ID) {
-		this.role_ID = role_ID;
+	public void setRole(Role role) {
+		this.role = role;
 	}
+
+
 }
