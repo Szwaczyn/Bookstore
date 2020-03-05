@@ -9,6 +9,7 @@ import javax.persistence.*;
 public class User implements Serializable{
 	
 	@Id
+	@GeneratedValue
 	private int id;
 	private String login;
 	private String password;

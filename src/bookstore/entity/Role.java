@@ -9,6 +9,7 @@ import javax.persistence.*;
 public class Role implements Serializable{
 
 	@Id
+	@GeneratedValue
 	private int id;
 	private String name;
 	
