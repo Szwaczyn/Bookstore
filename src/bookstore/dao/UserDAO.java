@@ -1,5 +1,6 @@
 package bookstore.dao;
 
+import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
@@ -38,6 +39,8 @@ public class UserDAO {
 	public boolean addUser(User u) {
 		EntityTransaction et = em.getTransaction();
 		
+		u.setPassword(this.getMD5(u.getPassword()));
+		
 		try {
 			et.begin();
 			em.persist(u);
@@ -54,8 +57,13 @@ public class UserDAO {
 		try {
 			MessageDigest md = MessageDigest.getInstance("MD5");
 			md.update(string.getBytes());
-		    String hashedString = DatatypeConverter
-		    	      .printHexBinary(md.digest()).toUpperCase();
+		    BigInteger hashed = new BigInteger(1, md.digest());
+		    String hashedString = hashed.toString(16);
+		    
+		    if(hashedString.length() == 31) {
+		    	hashedString = "0" + hashedString;
+		    }
+		    
 		    return hashedString;
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
