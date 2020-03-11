@@ -20,6 +20,7 @@ public class DBConfig implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent sce) {
+		System.out.println("ok");
 		this.emf = Persistence.createEntityManagerFactory("Bookstore");
 	}
 	
