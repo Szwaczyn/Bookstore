@@ -35,10 +35,10 @@ public class InitializeDB implements ServletRequestListener {
          UserDAO userDAO = new UserDAO(em);
          
          ServletRequest req = sre.getServletRequest();
-         req.setAttribute("bookDAO", bookDAO);
-         req.setAttribute("commentDAO", commentDAO);
-         req.setAttribute("roleDAO", roleDAO);
-         req.setAttribute("userDAO", userDAO);
+         req.setAttribute("BookDAO", bookDAO);
+         req.setAttribute("CommentDAO", commentDAO);
+         req.setAttribute("RoleDAO", roleDAO);
+         req.setAttribute("UserDAO", userDAO);
     }
 	
 }
