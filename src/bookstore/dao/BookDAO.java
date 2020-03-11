@@ -16,7 +16,7 @@ public class BookDAO {
 		this.em = em;
 	}
 	
-	public List<Book> getBooks(){
+	public List<Book> getBook(){
 		List<Book> books = this.em.createQuery("SELECT b FROM Book b").getResultList();
 		return books;
 	}
