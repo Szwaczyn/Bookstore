@@ -2,12 +2,7 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>Bookstore</display-name>
   <welcome-file-list>
-    <welcome-file>/WEB-INF/view/index.html</welcome-file>
-    <welcome-file>/WEB-INF/view/index.htm</welcome-file>
-    <welcome-file>/WEB-INF/view/index.jsp</welcome-file>
-    <welcome-file>/WEB-INF/view/default.html</welcome-file>
-    <welcome-file>/WEB-INF/view/default.htm</welcome-file>
-    <welcome-file>/WEB-INF/view/default.jsp</welcome-file>
+    <welcome-file>index</welcome-file>
   </welcome-file-list>
   
   <security-role>
@@ -28,7 +23,6 @@
 			<url-pattern>/index</url-pattern>
 			<url-pattern>/newbook</url-pattern>
 			<url-pattern>/overview</url-pattern>
-			<url-pattern>/</url-pattern>
 			<http-method>GET</http-method>
 			<http-method>POST</http-method>
 		</web-resource-collection>
