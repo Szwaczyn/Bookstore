@@ -30,11 +30,15 @@ public class UserDAO {
 	}
 	
 	public User getUser(String login) throws NoResultException {
-		User user = (User)em.createQuery("SELECT u FROM user u WHERE u.login = :login").
-				setParameter("login", login).
-				getSingleResult();
-		
-		return user;
+		try {
+			User user = (User)em.createQuery("SELECT u FROM user u WHERE u.login = :login").
+					setParameter("login", login).
+					getSingleResult();
+			
+			return user;
+		}catch(Exception e) {
+			return null;
+		}
 	}
 	
 	public boolean addUser(User u) {

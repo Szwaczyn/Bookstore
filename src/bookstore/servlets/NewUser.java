@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bookstore.dao.RoleDAO;
 import bookstore.dao.UserDAO;
 import bookstore.entity.Role;
 import bookstore.entity.User;
@@ -32,19 +33,18 @@ public class NewUser extends HttpServlet {
 		
 		if(!"".equals(login) && !"".equals(password) && !"".equals(password2) && password.equals(password2) && login != null && password != null){
 			User newUser = new User();
-			
-			Role role = new Role();
+			RoleDAO roleDAO = (RoleDAO)request.getAttribute("RoleDAO");
+			Role role = roleDAO.getUserRole();
 			
 			newUser.setLogin(login);
 			newUser.setPassword(password);
+			newUser.setRole(role);
 			
 			UserDAO userDAO = (UserDAO)request.getAttribute("UserDAO");
-			try {
-				userDAO.getUser(login);
+			if(userDAO.getUser(login) != null) {
 				request.setAttribute("error", "User already exist!");
 				doGet(request, response);
-
-			}catch(NoResultException e) {
+			} else {
 				if (userDAO.addUser(newUser) ) {
 					request.setAttribute("error", "User wass added");
 					doGet(request, response);
@@ -52,8 +52,7 @@ public class NewUser extends HttpServlet {
 					request.setAttribute("error", "Something went wrong!");
 					request.getRequestDispatcher("/WEB-INF/view/error.jsp").forward(request, response);
 				}
-			}
-			
+			}	
 
 		} else {
 			request.setAttribute("error", "The password isn't equal");
