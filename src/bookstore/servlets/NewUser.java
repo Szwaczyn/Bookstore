@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bookstore.dao.UserDAO;
+import bookstore.entity.Role;
 import bookstore.entity.User;
 
 /**
@@ -31,6 +32,8 @@ public class NewUser extends HttpServlet {
 		
 		if(!"".equals(login) && !"".equals(password) && !"".equals(password2) && password.equals(password2) && login != null && password != null){
 			User newUser = new User();
+			
+			Role role = new Role();
 			
 			newUser.setLogin(login);
 			newUser.setPassword(password);

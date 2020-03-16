@@ -14,6 +14,7 @@ public class Role implements Serializable {
 	private long id;
 	@Column(name = "role_name")
 	private String roleName;
+	
 	@OneToMany(mappedBy = "role", fetch = FetchType.EAGER)
 	private Set<User> user;
 
