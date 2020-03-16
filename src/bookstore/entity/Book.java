@@ -20,7 +20,7 @@ public class Book implements Serializable {
 	@Column(name="released")
 	private Timestamp released;
 	
-	@OneToMany
+	@OneToMany(mappedBy="book", fetch = FetchType.EAGER)
 	private Set<Comment> comment;
 
 	public long getId() {
