@@ -3,6 +3,8 @@
 	<persistence-unit name="Bookstore">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<class>bookstore.entity.User</class>
+		<class>bookstore.entity.Comment</class>
+		<class>bookstore.entity.Book</class>
 		<properties>
 			<property name="hibernate.connection.username" value="root"/>
 			<property name="hibernate.connection.password" value="P@ssw0rd"/>
