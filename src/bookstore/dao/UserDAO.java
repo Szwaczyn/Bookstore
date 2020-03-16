@@ -8,6 +8,7 @@ import bookstore.entity.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.NoResultException;
 import javax.xml.bind.DatatypeConverter;
 
 public class UserDAO {
@@ -28,10 +29,10 @@ public class UserDAO {
 		return this.em.find(User.class, id);
 	}
 	
-	public User getUser(String login) {
-		User user = (User)em.createQuery("SELECT u FROM user u WHERE u.login = :login")
-				.setParameter("login", login)
-				.getSingleResult();
+	public User getUser(String login) throws NoResultException {
+		User user = (User)em.createQuery("SELECT u FROM User u WHERE u.login = :login").
+				setParameter("login", login).
+				getSingleResult();
 		
 		return user;
 	}

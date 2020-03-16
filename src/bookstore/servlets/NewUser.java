@@ -43,7 +43,8 @@ public class NewUser extends HttpServlet {
 
 			}catch(NoResultException e) {
 				if (userDAO.addUser(newUser) ) {
-					response.sendRedirect(request.getContextPath() + "/index");
+					request.setAttribute("error", "User wass added");
+					doGet(request, response);
 				} else {
 					request.setAttribute("error", "Something went wrong!");
 					request.getRequestDispatcher("/WEB-INF/view/error.jsp").forward(request, response);
@@ -51,6 +52,8 @@ public class NewUser extends HttpServlet {
 			}
 			
 
+		} else {
+			request.setAttribute("error", "The password isn't equal");
 		}
 	}
 

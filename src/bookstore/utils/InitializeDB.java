@@ -6,9 +6,6 @@ import javax.servlet.ServletRequestEvent;
 import javax.servlet.ServletRequestListener;
 import javax.servlet.annotation.WebListener;
 
-import bookstore.dao.BookDAO;
-import bookstore.dao.CommentDAO;
-import bookstore.dao.RoleDAO;
 import bookstore.dao.UserDAO;
 
 /**
@@ -29,15 +26,9 @@ public class InitializeDB implements ServletRequestListener {
     public void requestInitialized(ServletRequestEvent sre)  { 
          EntityManager em = DBConfig.createEntityManager();
          
-         BookDAO bookDAO = new BookDAO(em);
-         CommentDAO commentDAO = new CommentDAO(em);
-         RoleDAO roleDAO = new RoleDAO(em);
          UserDAO userDAO = new UserDAO(em);
          
          ServletRequest req = sre.getServletRequest();
-         req.setAttribute("BookDAO", bookDAO);
-         req.setAttribute("CommentDAO", commentDAO);
-         req.setAttribute("RoleDAO", roleDAO);
          req.setAttribute("UserDAO", userDAO);
     }
 	

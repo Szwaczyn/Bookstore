@@ -1,55 +1,43 @@
 package bookstore.entity;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
-import java.util.Date;
-import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name="book")
+@Table(name = "book")
+public class Book implements Serializable {
 
-public class Book implements Serializable{
 	@Id
 	@GeneratedValue
-	private int id;
-	private String name;
+	private long id;
+	@Column(name = "title")
+	private String title;
+	@Column(name = "author")
 	private String author;
-	private Timestamp released;
-	
-	@OneToMany(mappedBy = "book", fetch = FetchType.EAGER)
-	// @OrderBy("date ASC")
-	private Set<Comment> comment;
-	
-	public int getId() {
+
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+
+	public void setId(long id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+
+	public String getTitle() {
+		return title;
 	}
-	public void setName(String name) {
-		this.name = name;
+
+	public void setTitle(String title) {
+		this.title = title;
 	}
+
 	public String getAuthor() {
 		return author;
 	}
+
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public Date getReleased() {
-		return released;
-	}
-	public void setReleased(Timestamp released) {
-		this.released = released;
-	}
-	public Set<Comment> getComment() {
-		return comment;
-	}
-	public void setComment(Set<Comment> comment) {
-		this.comment = comment;
-	}
+
 }

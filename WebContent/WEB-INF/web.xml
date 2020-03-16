@@ -23,8 +23,6 @@
 			<url-pattern>/index</url-pattern>
 			<url-pattern>/newbook</url-pattern>
 			<url-pattern>/overview</url-pattern>
-			<http-method>GET</http-method>
-			<http-method>POST</http-method>
 		</web-resource-collection>
 		<auth-constraint>
 			<role-name>user</role-name>
