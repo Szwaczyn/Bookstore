@@ -1,6 +1,8 @@
 package bookstore.entity;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -15,6 +17,11 @@ public class Book implements Serializable {
 	private String title;
 	@Column(name = "author")
 	private String author;
+	@Column(name="released")
+	private Timestamp released;
+	
+	@OneToMany
+	private Set<Comment> comment;
 
 	public long getId() {
 		return id;
@@ -40,4 +47,20 @@ public class Book implements Serializable {
 		this.author = author;
 	}
 
+	public Timestamp getReleased() {
+		return released;
+	}
+
+	public void setReleased(Timestamp released) {
+		this.released = released;
+	}
+
+	public Set<Comment> getComment() {
+		return comment;
+	}
+
+	public void setComment(Set<Comment> comment) {
+		this.comment = comment;
+	}
+	
 }

@@ -22,6 +22,10 @@ public class Comment implements Serializable {
 	@JoinColumn(name="user")
 	private User user;
 	
+	@ManyToOne
+	@JoinColumn(name="book")
+	private Book book;
+	
 	
 	public String getContent() {
 		return content;
@@ -47,6 +51,10 @@ public class Comment implements Serializable {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	
+	public Book getBook() {
+		return book;
+	}
+	public void setBook(Book book) {
+		this.book = book;
+	}
 }
