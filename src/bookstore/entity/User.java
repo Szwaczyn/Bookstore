@@ -21,6 +21,10 @@ public class User implements Serializable {
 	
 	@OneToMany(mappedBy="user")
 	private Set<Comment> comment;
+	
+	@ManyToOne
+	@JoinColumn(name="role")
+	private Role role;
 
 	public String getDisplayName() {
 		return displayName;
@@ -60,6 +64,14 @@ public class User implements Serializable {
 
 	public void setComment(Set<Comment> comment) {
 		this.comment = comment;
+	}
+
+	public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 }

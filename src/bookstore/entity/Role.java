@@ -1,0 +1,36 @@
+package bookstore.entity;
+
+import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name = "role")
+public class Role implements Serializable {
+
+	@Id
+	@GeneratedValue
+	private long id;
+	@Column(name = "role_name")
+	private String roleName;
+	@OneToMany(mappedBy = "role")
+	private Set<User> user;
+
+	public String getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(String roleName) {
+		this.roleName = roleName;
+	}
+
+	public Set<User> getUser() {
+		return user;
+	}
+
+	public void setUser(Set<User> user) {
+		this.user = user;
+	}
+
+}
