@@ -6,7 +6,7 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
+@Table(name = "User")
 public class User implements Serializable {
 
 	@Id
@@ -16,7 +16,7 @@ public class User implements Serializable {
 	private String login;
 	@Column(name = "password")
 	private String password;
-	@Column(name = "display_name")
+	@Column(name = "displayName")
 	private String displayName;
 	
 	@OneToMany(mappedBy="user")

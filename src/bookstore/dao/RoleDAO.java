@@ -17,13 +17,14 @@ public class RoleDAO {
 	
 	public Role getUserRole() {
 		try {
-			Role user = (Role)em.createNativeQuery("SELECT r FROM role r WHERE r.role_name = :role").
-			setParameter("role", "user").
+			Role user = (Role)em.createQuery("SELECT r FROM Role r WHERE r.roleName = :roles").
+			setParameter("roles", "user").
 			getSingleResult();
 			return user;
 		}catch(Exception nre) {
 			Role newUserRole = new Role();
 			newUserRole.setRoleName("user");
+			nre.printStackTrace();
 			
 			if(this.createRole(newUserRole)) {
 				return newUserRole;

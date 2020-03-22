@@ -43,11 +43,11 @@ public class NewUser extends HttpServlet {
 			UserDAO userDAO = (UserDAO)request.getAttribute("UserDAO");
 			if(userDAO.getUser(login) != null) {
 				request.setAttribute("error", "User already exist!");
-				doGet(request, response);
+				this.doGet(request, response);
 			} else {
 				if (userDAO.addUser(newUser) ) {
 					request.setAttribute("error", "User wass added");
-					doGet(request, response);
+					this.doGet(request, response);
 				} else {
 					request.setAttribute("error", "Something went wrong!");
 					request.getRequestDispatcher("/WEB-INF/view/error.jsp").forward(request, response);

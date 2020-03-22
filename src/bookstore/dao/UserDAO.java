@@ -29,9 +29,9 @@ public class UserDAO {
 		return this.em.find(User.class, id);
 	}
 	
-	public User getUser(String login) throws NoResultException {
+	public User getUser(String login) {
 		try {
-			User user = (User)em.createQuery("SELECT u FROM user u WHERE u.login = :login").
+			User user = (User)em.createQuery("SELECT u FROM User u WHERE u.login = :login").
 					setParameter("login", login).
 					getSingleResult();
 			

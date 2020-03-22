@@ -6,13 +6,13 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "role")
+@Table(name = "Role")
 public class Role implements Serializable {
 
 	@Id
 	@GeneratedValue
 	private long id;
-	@Column(name = "role_name")
+	@Column(name = "roleName")
 	private String roleName;
 	
 	@OneToMany(mappedBy = "role", fetch = FetchType.EAGER)
