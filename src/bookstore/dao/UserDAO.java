@@ -41,7 +41,7 @@ public class UserDAO {
 		}
 	}
 	
-	public boolean addUser(User u) {
+	public boolean createUser(User u) {
 		EntityTransaction et = em.getTransaction();
 		
 		u.setPassword(this.getMD5(u.getPassword()));

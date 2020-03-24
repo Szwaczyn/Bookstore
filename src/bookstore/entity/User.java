@@ -6,24 +6,24 @@ import java.util.Set;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "User")
+@Table(name = "user")
 public class User implements Serializable {
 
 	@Id
 	@GeneratedValue
-	private long id;
-	@Column(name = "login")
-	private String login;
+	private long idUser;
+	@Column(name = "userName")
+	private String userName;
 	@Column(name = "password")
 	private String password;
 	@Column(name = "displayName")
 	private String displayName;
-	
-	@OneToMany(mappedBy="user")
+
+	@OneToMany(mappedBy = "user")
 	private Set<Comment> comment;
-	
+
 	@ManyToOne
-	@JoinColumn(name="role")
+	@JoinColumn(name = "role")
 	private Role role;
 
 	public String getDisplayName() {
@@ -35,19 +35,19 @@ public class User implements Serializable {
 	}
 
 	public long getId() {
-		return id;
+		return idUser;
 	}
 
 	public void setId(int id) {
-		this.id = id;
+		this.idUser = id;
 	}
 
 	public String getLogin() {
-		return login;
+		return userName;
 	}
 
 	public void setLogin(String login) {
-		this.login = login;
+		this.userName = login;
 	}
 
 	public String getPassword() {
